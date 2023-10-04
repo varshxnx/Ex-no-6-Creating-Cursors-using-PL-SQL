@@ -12,48 +12,40 @@
 
 ### Create employee table
 ```
-CREATE TABLE employd (
-  empid NUMBER,
-  empname VARCHAR(10),
-  dept VARCHAR(10),
-  salary NUMBER
-);
-select * from employd;
-INSERT INTO employd VALUES (1, 'John Doe', 'Sales', 100000);
-INSERT INTO employd VALUES (2, 'Jane Doe', 'Marketing', 120000);
+CREATE TABLE employee4 (empid NUMBER,empname VARCHAR(10),dept VARCHAR(10),salary NUMBER);
+INSERT INTO employee4 VALUES (1, 'matt', 'IT', 70000);
+INSERT INTO employee4 VALUES (2, 'tristan', 'HR', 000);
+INSERT INTO employee4 VALUES (3, 'chris', 'Marketing', 90000);
+select * from employee4;
 ```
 
 ### PLSQL Cursor code
 ```
-DECLARE
-   CURSOR employd_cursor IS
-   SELECT empid,empname,dept,salary
-   FROM employd;
-   emp_id NUMBER;
-   emp_name VARCHAR(50);
-   emp_dept VARCHAR(50);
-   emp_salary NUMBER;
-BEGIN
-  OPEN employd_cursor;
-
-  LOOP
-    FETCH employd_cursor INTO emp_id, emp_name, emp_dept, emp_salary;
-
-    EXIT WHEN employd_cursor%NOTFOUND;
-
-    DBMS_OUTPUT.PUT_LINE('Employee ID: ' || emp_id);
-    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || emp_name);
-    DBMS_OUTPUT.PUT_LINE('Department: ' || emp_dept);
-    DBMS_OUTPUT.PUT_LINE('Salary: ' || emp_salary);
-  END LOOP;
-
-  CLOSE employd_cursor;
-END;
-/
+declare
+  2  cursor employee4_cursor is
+  3  select empid,empname,dept,salary
+  4  from employee4;
+  5  emp_id number;
+  6  emp_name varchar(20);
+  7  emp_dept varchar(20);
+  8  emp_salary number;
+  9  begin
+ 10  open employee4_cursor;
+ 11  loop
+ 12  fetch employee4_cursor into emp_id,emp_name,emp_dept,emp_salary;
+ 13  exit when employee4_cursor%NOTFOUND;
+ 14  DBMS_OUTPUT.PUT_LINE('Employee ID: ' || emp_id);
+ 15  DBMS_OUTPUT.PUT_LINE('Employee Name: ' || emp_name);
+ 16  DBMS_OUTPUT.PUT_LINE('Department: ' || emp_dept);
+ 17  DBMS_OUTPUT.PUT_LINE('Salary: ' || emp_salary);
+ 18  end loop;
+ 19  close employee4_cursor;
+ 20  end;
+ 21  /
 ```
 
 ### Output:
-![WhatsApp Image 2023-09-26 at 23 04 09](https://github.com/ShakthiSundar-K/Ex-no-6-Creating-Cursors-using-PL-SQL/assets/128116143/c8816d35-3848-496c-a08b-7b7d27d6620b)
+![image](https://github.com/varshxnx/Ex-no-6-Creating-Cursors-using-PL-SQL/assets/122253525/da2f6427-2ced-4eee-b854-18734d929ece)
 
 ### Result:
 THE PROGRAM HAS BEEN IMPLEMENTED SUCCESSFULLY
